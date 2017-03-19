@@ -14,14 +14,14 @@ private let reuseIdentifier = "Cell"
 class MemeMakerCollectionViewController: UICollectionViewController {
     
     
-    @IBOutlet weak var memeImageView : UIImageView!
+    
     var memes: [Meme]!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        var memes = appDelegate.memes
+        memes = appDelegate.memes
         collectionView!.reloadData()
     }
     
@@ -65,12 +65,13 @@ class MemeMakerCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         let meme = memes[(indexPath as NSIndexPath).row]
         
         // Set the image
-//        cell.memeImageView?.image = meme.memedImage
+        cell.memeImageView?.image = meme.memedImage
         
         return cell
     }

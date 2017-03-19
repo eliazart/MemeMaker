@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="-1351" y="-572"/>
         </scene>
-        <!--View Controller-->
+        <!--Meme Maker Table View Controller-->
         <scene sceneID="R8Y-bX-q61">
             <objects>
-                <viewController id="h9G-wb-btr" sceneMemberID="viewController">
+                <viewController id="h9G-wb-btr" customClass="MemeMakerTableViewController" customModule="MemeMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t1f-oz-X6A"/>
                         <viewControllerLayoutGuide type="bottom" id="bDD-SZ-geh"/>
@@ -80,6 +80,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ufv-Sa-Jhq"/>
+                    <connections>
+                        <outlet property="tableView" destination="iJb-yN-kkd" id="fO5-mx-qhA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSO-zA-9UI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,11 +105,11 @@
             </objects>
             <point key="canvasLocation" x="-1351" y="128"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Meme Maker Collection View Controller-->
         <scene sceneID="mYN-d2-3Gl">
             <objects>
-                <collectionViewController id="ati-Zv-M5C" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="afx-Bc-qbg">
+                <collectionViewController id="ati-Zv-M5C" customClass="MemeMakerCollectionViewController" customModule="MemeMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="afx-Bc-qbg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,7 +120,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9J-DN-Imf">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l9J-DN-Imf" customClass="MemeCollectionViewCell" customModule="MemeMaker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="137" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -130,12 +133,11 @@
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="memeImageView" destination="8Sx-7E-o7a" id="Hmw-cK-Gip"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="ati-Zv-M5C" id="Lly-qB-Eao"/>
-                            <outlet property="delegate" destination="ati-Zv-M5C" id="4TP-Po-IXR"/>
-                        </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="GaC-0P-Qz7"/>
                 </collectionViewController>

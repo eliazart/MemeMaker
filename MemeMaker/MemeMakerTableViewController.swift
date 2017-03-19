@@ -13,12 +13,13 @@ class MemeMakerTableViewController: UIViewController,  UITableViewDelegate,
 UITableViewDataSource {
     
     var memes: [Meme]!
+    
     @IBOutlet var tableView : UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        var memes = appDelegate.memes
+        memes = appDelegate.memes
         
     }
     
