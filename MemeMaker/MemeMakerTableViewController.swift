@@ -20,7 +20,7 @@ UITableViewDataSource {
         super.viewWillAppear(animated)
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = appDelegate.memes
-        
+        tableView!.reloadData()
     }
     
     override func viewDidLoad() {
@@ -59,7 +59,10 @@ UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let detailController = storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailController.meme = memes[(indexPath as NSIndexPath).row]
+        detailController.memeNumber = (indexPath as NSIndexPath).row
+        navigationController!.pushViewController(detailController, animated: true)
     }
     
 }

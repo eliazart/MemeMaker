@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-private let reuseIdentifier = "Cell"
+
 
 class MemeMakerCollectionViewController: UICollectionViewController {
     
@@ -25,34 +25,7 @@ class MemeMakerCollectionViewController: UICollectionViewController {
         collectionView!.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    // MARK: UICollectionViewDataSource
+        // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -66,7 +39,7 @@ class MemeMakerCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MemeCollectionViewCell
         
         let meme = memes[(indexPath as NSIndexPath).row]
         
@@ -74,6 +47,16 @@ class MemeMakerCollectionViewController: UICollectionViewController {
         cell.memeImageView?.image = meme.memedImage
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath)
+    {
+        
+        let detailController = storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailController.meme = memes[(indexPath as NSIndexPath).row]
+        detailController.memeNumber = (indexPath as NSIndexPath).row
+        navigationController!.pushViewController(detailController, animated: true)
+        
     }
     
     // MARK: UICollectionViewDelegate
